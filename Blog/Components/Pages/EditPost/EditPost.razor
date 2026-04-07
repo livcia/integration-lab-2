@@ -1,0 +1,96 @@
+@namespace Blog.Components.Pages
+@page "/admin/post/new"
+@page "/admin/post/{id:int}"
+@rendermode InteractiveServer
+
+<PageTitle>@PageTitle</PageTitle>
+
+<main class="content">
+    <h2>@PageTitle</h2>
+    <div class="tab-buttons">
+        <button class="tab-button @(!isPreviewMode ? "active" : "")" @onclick="() => SwitchTab(true)">
+            ✏️ Edycja
+        </button>
+        <button class="tab-button @(isPreviewMode ? "active" : "")" @onclick="() => SwitchTab(false)">
+            👁️ Podgląd
+        </button>
+    </div>
+    @if (!isPreviewMode)
+    {
+        <div >
+            <form>
+                <div class="form-group">
+                    <label for="title">Tytuł *</label>
+                    <input type="text" id="title" class="form-control"
+                            @bind="workingPost.Title" placeholder="Wpisz tytuł posta" />
+                </div>
+
+                <div class="form-group">
+                    <label for="content">Treść *</label>
+                    <textarea id="content" class="form-control form-textarea"
+                                @bind="workingPost.Content" placeholder="Wpisz treść posta (HTML/Markdown)"></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="photo">URL Obrazu</label>
+                        <input type="text" id="photo" class="form-control"
+                                @bind="workingPost.Photo" placeholder="https://..." />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="author">Autor *</label>
+                        <select id="author" class="form-control" value="@workingPost.author" @onchange="OnAuthorChanged">
+                            @foreach (var user in usersList)
+                            {
+                                <option value="@user.Id">@user.Nickname</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group checkbox">
+                    <label for="published">
+                        <input type="checkbox" id="published" @onchange="OnPublishedChanged" checked="@workingPost.is_published" />
+                        Opublikowany
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-primary" @onclick="SavePost">
+                        💾 Zapisz
+                    </button>
+                    <button type="button" class="btn btn-secondary" @onclick="Cancel">
+                        ← Anuluj
+                    </button>
+                </div>
+            </form>
+        </div>
+    }
+    @if (isPreviewMode)
+    {
+        <div class="preview-container">
+            @if (!string.IsNullOrEmpty(workingPost.Photo))
+            {
+                <div class="preview-hero">
+                    <img src="@workingPost.Photo" alt="Post preview" />
+                </div>
+            }
+            <div>
+                <h1 class="preview-content">@workingPost.Title</h1>
+
+                <div class="preview-meta">
+                    <span>@workingPost.User?.Nickname</span>
+                    <span>@workingPost.Created_At</span>
+                    @if (workingPost.is_published != true)
+                    {
+                        <span class="badge-draft">WERSJA ROBOCZA</span>
+                    }
+                </div>
+                <div>
+                    @((MarkupString)SanitizeHtml(workingPost.Content))
+                </div>
+            </div>
+        </div>
+    }
+</main>
