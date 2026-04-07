@@ -1,0 +1,39 @@
+@namespace Blog.Components.Pages
+@page "/posts/{id:int}"
+@rendermode InteractiveServer
+
+<PageTitle>@(CurrentPost?.Title)</PageTitle>
+
+@if (CurrentPost != null)
+{
+    <main class="content post-detail-main">
+        <div class="preview-container">
+            @if (!string.IsNullOrEmpty(CurrentPost.Photo))
+            {
+                <div class="preview-hero">
+                    <img src="@CurrentPost.Photo" alt="Post preview" />
+                </div>
+            }
+
+            <div>
+                <h1 class="preview-content">@CurrentPost.Title</h1>
+
+                <div class="preview-meta">
+                    <span>@CurrentPost.User?.Nickname</span>
+                    <span>@CurrentPost.Created_At</span>
+                    @if (CurrentPost.is_published != true)
+                    {
+                        <span class="badge-draft">WERSJA ROBOCZA</span>
+                    }
+                </div>
+
+                <div class="preview-body">
+                    @((MarkupString)CurrentPost.Content)
+                </div>
+            </div>
+        </div>
+        <div class="post-navigation">
+            <a href="/posts" class="btn-back">← Wróć do listy</a>
+        </div>
+    </main>
+}
