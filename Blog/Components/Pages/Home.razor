@@ -1,0 +1,13 @@
+﻿@page "/"
+@inject NavigationManager Navigation
+
+<PageTitle>Home</PageTitle>
+
+@* TODO: Add some content here, maybe a welcome message or a brief introduction to the blog. *@
+@code
+{
+    protected override async Task OnInitializedAsync()
+        {
+            Navigation.NavigateTo("/posts");
+        }
+}

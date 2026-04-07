@@ -1,0 +1,70 @@
+@namespace Blog.Components.Pages
+@page "/admin"
+@rendermode InteractiveServer
+
+<PageTitle>Admin Panel</PageTitle>
+
+<main class="content">
+    <h2>Zarządzanie treścią</h2>
+
+    <div class="stats-grid">
+        <div class="stat-card blue">
+            <span class="stat-label">Posty</span>
+            <p class="stat-value">@posts.Count()</p>
+        </div>
+        <div class="stat-card emerald">
+            <span class="stat-label">Aktywność</span>
+            <p class="stat-value">@ActivityLevel</p>
+        </div>
+        <div class="stat-card amber">
+            <span class="stat-label">Data</span>
+            <p class="stat-value">@DateTime.Now.ToString("yyyy-MM-dd")</p>
+        </div>
+    </div>
+
+    <div class="table-container" @ref="mainContainer">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Tytuł</th>
+                    <th>Autor</th>
+                    <th>Status</th>
+                    <th>Data Stworzenia</th>
+                    <th>Data Ostatniej Publikacji</th>
+                    <th class="text-right">Opcje</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var post in posts){
+                    <tr>
+                        <td class="font-medium">@post.Title</td>
+                        <td>@post.User?.Nickname</td>
+                        @if (post.is_published == true){
+                            <td><span class="published">Published</span></td>
+                        }else{
+                            <td><span class="private">Private</span></td>
+                        }
+                        <td>@post.Created_At</td>
+                        <td>@post.Published_At</td>
+                        <td class="text-right">
+                            <div class="options-menu">
+                                <button class="btn-icon" @onclick="() => ToggleMenu(post.Id)">...</button>
+                                @if (activeMenuId == post.Id)
+                                {
+                                    <div class="menu-popup">
+                                        <a href="/posts/@post.Id" class="menu-item">👁️ Podgląd</a>
+                                        <button class="menu-item" @onclick="() => EditPost(post.Id)">✏️ Modyfikuj</button>
+                                        <button class="menu-item" @onclick="() => TogglePublish(post.Id)">📢 Publikuj/Ukryj</button>
+                                        <button class="menu-item delete" @onclick="() => DeletePost(post.Id)">🗑️ Usuń</button>
+                                    </div>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <a href="/admin/post/new" class="fab-button" title="Dodaj nowy post" aria-label="Dodaj nowy post">+</a>
+       
+</main>

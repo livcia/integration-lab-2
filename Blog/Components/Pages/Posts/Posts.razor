@@ -1,0 +1,34 @@
+@namespace Blog.Components.Pages
+@page "/posts"
+
+<PageTitle>Posty</PageTitle>
+
+<div>
+    <header class="blog-header">
+        <h2>Najnowsze wpisy</h2>
+        <p class="section-subtitle">Odkryj nowości ze świata technologii</p>
+    </header>
+
+    <div class="post-grid">
+            @foreach(var post in posts){
+                @if (post.is_published == true){
+                <a href="@($"/posts/{post.Id}")" class="post-link">
+                    <div class="post-card">
+                        <div class="post-image">
+                            <div class="image-placeholder">
+                                <img width="100%" height="100%" src="@post.Photo" alt="Post Image"/>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <h3 class="post-title">@post.Title</h3>
+                            <div class="post-footer">
+                                <span class="post-date">@post.Published_At</span>
+                                <span class="read-more">@post.User?.Nickname</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            }
+        }
+    </div>
+</div>

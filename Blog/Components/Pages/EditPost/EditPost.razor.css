@@ -1,0 +1,153 @@
+.tab-buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #403d52;
+}
+
+.badge-draft{
+    padding: 0.25rem 0.5rem;
+    background-color: #3f3b56;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 0.75rem 1rem;
+    color: #6e6a86;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    margin-bottom: -2px;
+}
+
+.tab-button:hover {
+    color: #9ccfd8;
+}
+
+.tab-button.active {
+    color: #e0def4;
+    border-bottom-color: #9ccfd8;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #e0def4;
+}
+
+.form-control {
+    padding: 0.75rem 1rem;
+    background-color: #191724;
+    border: 1px solid #26233a;
+    border-radius: 0.5rem;
+    color: #e0def4;
+    transition: border-color 0.2s;
+}
+
+.form-control:focus {
+    border-color: #9ccfd8;
+    box-shadow: 0 0 0 3px rgba(156, 207, 216, 0.1);
+}
+
+.form-textarea {
+    min-height: 300px;
+    resize: vertical;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+.form-group.checkbox input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.form-group.checkbox label {
+    margin-bottom: 0;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background-color: #9ccfd8;
+    color: #191724;
+}
+
+.btn-primary:hover {
+    background-color: #7ecdd4;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #403d52;
+    color: #e0def4;
+}
+
+.btn-secondary:hover {
+    background-color: #504a6e;
+    transform: translateY(-2px);
+}
+
+.preview-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.preview-hero {
+    position: relative;
+    height: 400px;
+    margin-bottom: 2rem;
+}
+
+.preview-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.preview-content{
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.preview-meta {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3.5rem;
+}
+
