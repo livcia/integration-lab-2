@@ -1,14 +1,11 @@
 # TechBlog Integration Platform
+[![.NET](https://img.shields.io/badge/.NET-10.0-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
+[![Blazor](https://img.shields.io/badge/Blazor-Interactive%20Server-512BD4?logo=blazor&logoColor=white)](https://learn.microsoft.com/aspnet/core/blazor/)
+[![Entity Framework Core](https://img.shields.io/badge/Entity%20Framework%20Core-SQLite-5C2D91?logo=sqlite&logoColor=white)](https://learn.microsoft.com/ef/core/)
+
 
 ## Description
 This project is designed to create a blogging application leveraging modern web services and integration techniques.
-
-## Tech Stack
-| Technology           | Badge                                |
-|----------------------|--------------------------------------|
-| Blazor               | ![Blazor Badge](https://example.com/blazor-badge) |
-| Entity Framework Core| ![EF Core Badge](https://example.com/ef-core-badge) |
-| SQLite               | ![SQLite Badge](https://example.com/sqlite-badge) |
 
 ## Key Features
 - Blazor Interactive Server app
@@ -22,8 +19,8 @@ This project is designed to create a blogging application leveraging modern web 
 ## Demo & Visuals
 Watch our demo on YouTube: [TechBlog Integration Platform Demo](https://youtu.be/iYJfto5luQA)
 
-![Screenshot Placeholder](link-to-screenshot1)
-![Screenshot Placeholder](link-to-screenshot2)
+![Posts](https://i.imgur.com/PrB6sYx.png)
+![Admin Panel](https://i.imgur.com/UMDXbL5.png)
 
 ## Installation and Setup
 1. Clone the repository: `git clone https://github.com/livcia/integration-lab-2.git`
