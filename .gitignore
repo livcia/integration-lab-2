@@ -1,6 +1,6 @@
 *.db-shm
 *.db-wal
-
+sprawko4.md
 _build/
 _site/
 
