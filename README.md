@@ -23,8 +23,8 @@ Watch demo on YouTube: [TechBlog Integration Platform Demo](https://youtu.be/iYJ
 ![Admin Panel](https://i.imgur.com/UMDXbL5.png)
 
 ## Installation and Setup
-1. Clone the repository: `git clone https://github.com/livcia/integration-lab-2.git`
-2. Navigate into the project directory: `cd integration-lab-2`
+1. Clone the repository: `git clone https://github.com/livcia/Blog-App.git`
+2. Navigate into the project directory: `cd Blog-App/Blog`
 3. Install dependencies: `dotnet restore`
 4. Run the application: `dotnet run`
 
