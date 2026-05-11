@@ -3,7 +3,7 @@
 sprawko4.md
 _build/
 _site/
-
+.env
 # User-specific files
 *.suo
 *.user
@@ -199,6 +199,3 @@ __pycache__/
 
 # Windows thumbnail cache files
 Thumbs.db
-
-# Pliki ze zmiennymi srodowiskowymi
-.env
