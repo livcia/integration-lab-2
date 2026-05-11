@@ -13,14 +13,19 @@ namespace Blog.Data
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionString = Configuration.GetConnectionString("postsDb");
-            if (string.IsNullOrWhiteSpace(connectionString))
-            {
-                throw new InvalidOperationException("The 'ConnectionStrings:postsDb' configuration value is missing or empty.");
-            }
+            var dbProvider = Configuration["DatabaseConfig:Provider"];
 
-            optionsBuilder.UseSqlite(connectionString);
+            if (dbProvider == "PostgreSQL")
+            {
+                var connectionString = Configuration.GetConnectionString("PostgresConnection");
+                optionsBuilder.UseNpgsql(connectionString);
+            }
+            else
+            {
+                var connectionString = Configuration.GetConnectionString("SqliteConnection");
+                optionsBuilder.UseSqlite(connectionString);
+            }
         }
-        
+
     }
 }
