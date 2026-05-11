@@ -71,6 +71,8 @@ namespace Blog.Components.Pages
 
         private void SavePost()
         {
+            workingPost.User = null;
+
             if (Id.HasValue)
             {
                 PostService.UpdatePost(workingPost);
@@ -84,15 +86,15 @@ namespace Blog.Components.Pages
 
         private void Cancel()
         {
-           PostService.ClearCache();
-           Navigation.NavigateTo("/admin");
+            PostService.ClearCache();
+            Navigation.NavigateTo("/admin");
         }
 
         private string SanitizeHtml(string html)
         {
             if (string.IsNullOrEmpty(html))
                 return html;
-            
+
             var sanitizer = new HtmlSanitizer();
             return sanitizer.Sanitize(html);
         }

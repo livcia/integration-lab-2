@@ -9,11 +9,11 @@ namespace Blog.Services
 
         public PostService()
         {
-            _context = new PostsContext(new ConfigurationBuilder().AddJsonFile("appsettings.json").Build());
+            _context = new PostsContext(new ConfigurationBuilder().AddJsonFile("appsettings.json").AddEnvironmentVariables().Build());
         }
 
         public void ResetContext(){
-            _context = new PostsContext(new ConfigurationBuilder().AddJsonFile("appsettings.json").Build());
+            _context = new PostsContext(new ConfigurationBuilder().AddJsonFile("appsettings.json").AddEnvironmentVariables().Build());
         }
          //CRUD:
         public void CreatePost(Post newPost)

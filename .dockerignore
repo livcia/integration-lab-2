@@ -1,0 +1,23 @@
+**/bin/
+**/obj/
+**/out/
+**/publish/
+
+# IDE i pliki konfiguracyjne
+**/.vs/
+**/.vscode/
+**/*.user
+**/*.*proj.user
+
+# Git
+**/.git/
+**/.gitignore
+**/.github/
+
+# Docker
+**/.dockerignore
+Dockerfile*
+docker-compose*
+
+README.md
+appsettings.Development.json
